@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Random Text</title>
+    <style>
+        body {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .trivia-content {
+            width: 50%;
+            margin: auto;
+            display: grid;
+            justify-content: center;
+            align-content: center;
+            height: 100vh;
+
+        }
+
+        .trivia-content article {
+            display: grid;
+            justify-content: center;
+            align-content: center;
+            padding: 10px;
+            width: 100%;
+            height: 100%;
+/*            background: rgba(0, 0, 0, 0.2);*/
+            box-shadow: 0px 0px 15px #eee;
+        }
+
+
+
+        .trivia-content h4 {
+            margin: 5px 0px;
+            font-size: 25px;
+            text-align: center;
+        }
+
+        #randomTextGenerator {
+            background: transparent;
+            border-color: #111;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 5px;
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 15px;
+            width: 100px;
+            text-align: center;
+        }
+        .randomBtn {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="trivia-content">
+        <article>
+            <h4 id="showContent"></h4>
+            <div class="randomBtn">
+                <button id="randomTextGenerator">Test</button>
+            </div>
+        </article>
+    </section>
+
+    <script>
+        const RandomTextArray = ['Hello John', 'Hi Emy', 'Good Morning Susy','Bob Hi','It is a shiny Day','Great to see you','Can we play','Michael Are you there','I am going on a drive','Will you do that work','Sure','Honey have you done your homework','Please wear your mask']
+        let randomText = document.querySelector('#showContent');
+        randomText.textContent = 'Click To Generate Random Text'
+        document.querySelector('#randomTextGenerator').addEventListener('click', () => {
+            let RandomNumber = Math.floor(Math.random() * RandomTextArray.length);
+            let RandomSameNumber = Math.floor(Math.random() * RandomTextArray.length);
+            let randomContent = RandomTextArray[RandomNumber];
+            if (randomContent === randomText.textContent) {
+                console.log('equal')
+                randomText.textContent = RandomTextArray[RandomSameNumber];
+            } else {
+                console.log('not')
+                randomText.textContent = randomContent;
+            }
+        })
+
+    </script>
+</body>
+
+</html>
